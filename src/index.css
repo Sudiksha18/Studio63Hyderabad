@@ -1,0 +1,586 @@
+@import "tailwindcss";
+
+/* =============================================
+   DARK MODE STRATEGY — class-based (html.dark)
+   Tailwind v4 defaults to media-query; we override
+   it to match ThemeContext's html.dark class toggle.
+   ============================================= */
+@variant dark (&:is(.dark *));
+
+/* =============================================
+   DESIGN TOKENS — Light Mode (Ivory Editorial)
+   ============================================= */
+@theme {
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette */
+  --color-ivory:        #FAF7F1;
+  --color-offwhite:     #F3EFE7;
+  --color-beige:        #E7DFD1;
+  --color-charcoal:     #211E1B;
+  --color-charcoal-soft:#34302B;
+  --color-brown:        #6E5D4C;
+  --color-gold:         #B08D57;
+  --color-gold-soft:    #C9AB7C;
+  --color-gold-vivid:   #C9962A;
+  --color-surface:      #FFFFFF;
+  /* Surfaces used behind light text (headers, selected controls, dialogs). */
+  --color-inverse-surface: #211E1B;
+  --color-rim:          rgba(0,0,0,0.10);
+}
+
+:root {
+  --color-ivory:        #FAF7F1;
+  --color-offwhite:     #F3EFE7;
+  --color-beige:        #E7DFD1;
+  --color-charcoal:     #211E1B;
+  --color-charcoal-soft:#34302B;
+  --color-brown:        #6E5D4C;
+  --color-gold:         #B08D57;
+  --color-gold-soft:    #C9AB7C;
+  --color-gold-vivid:   #C9962A;
+  --color-surface:      #FFFFFF;
+  --color-inverse-surface: #211E1B;
+  --color-rim:          rgba(0,0,0,0.10);
+}
+
+
+/* =============================================
+   DESIGN TOKENS — Dark Mode (Cinematic Black)
+   ============================================= */
+html.dark, [data-theme="dark"] {
+  --color-ivory:        #FAF7F1;
+  --color-offwhite:     #100E0B;
+  --color-beige:        #1E1A15;
+  --color-charcoal:     #F5F1EB;
+  --color-charcoal-soft:#E2DBD0;
+  --color-brown:        #B0A598;
+  --color-gold:         #C9962A;
+  --color-gold-soft:    #E8C96B;
+  --color-gold-vivid:   #DEAD55;
+  --color-surface:      #151210;
+  --color-inverse-surface: #151210;
+  --color-rim:          rgba(255,255,255,0.07);
+}
+
+/* Dark page background */
+html.dark body {
+  background-color: #080604;
+}
+
+/* Dark mode readability fix for low-opacity white text and dim headings */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark [class*="text-white"] {
+  color: rgba(250, 247, 241, 0.96) !important;
+}
+
+html.dark [class*="text-[var(--color-charcoal)]"] {
+  color: #F5F1EB !important;
+}
+
+html.dark [class*="text-[var(--color-brown)]"] {
+  color: #D9CDBE !important;
+}
+
+html.dark [class*="dark:text-white/"] {
+  color: rgba(250, 247, 241, 0.96) !important;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+input, textarea, select {
+  text-align: left;
+}
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+/* Editorial scale utilities */
+.text-display-hero {
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.text-display-xl {
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+}
+
+.text-display-lg {
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.text-editorial-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* =============================================
+   SELECTION & FOCUS
+   ============================================= */
+::selection {
+  background: var(--color-gold);
+  color: #080604;
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* =============================================
+   SCROLLBAR — thin editorial
+   ============================================= */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-vivid);
+}
+
+/* =============================================
+   KEYFRAMES
+   ============================================= */
+
+/* Marquee — infinite horizontal scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Reverse marquee */
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Fade + slide up (for section reveals) */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Clip reveal — text slides up from clipped area */
+@keyframes clipReveal {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0% 0 0 0); }
+}
+
+/* Shimmer — gold loading/accent shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Pulse dot */
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* Scroll bounce indicator */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+/* =============================================
+   GRAIN OVERLAY (Film Texture)
+   ============================================= */
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* =============================================
+   NAVIGATION LINK UNDERLINE ANIMATION
+   ============================================= */
+.nav-link-hover {
+  position: relative;
+}
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width 0.3s ease;
+}
+.nav-link-hover:hover::after,
+.nav-link-hover.active::after {
+  width: 100%;
+}
+
+/* =============================================
+   UNDERLINE INPUT STYLE (Contact form)
+   ============================================= */
+.input-underline {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-beige);
+  border-radius: 0;
+  padding: 10px 0;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-charcoal);
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+.input-underline::placeholder {
+  color: var(--color-brown);
+  opacity: 0.6;
+}
+.input-underline:focus {
+  border-bottom-color: var(--color-gold);
+}
+
+html.dark .input-underline {
+  color: var(--color-ivory);
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+html.dark .input-underline:focus {
+  border-bottom-color: var(--color-gold);
+}
+
+/* =============================================
+   IMAGE — No border radius anywhere (editorial)
+   ============================================= */
+img {
+  border-radius: 0 !important;
+}
+
+/* =============================================
+   MARQUEE STRIP
+   ============================================= */
+.marquee-strip {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 22s linear infinite;
+}
+.marquee-inner:hover {
+  animation-play-state: paused;
+}
+
+/* =============================================
+   DARK MODE — Form & card overrides
+   ============================================= */
+
+/* Dark mode: forms inside pages get proper dark treatment */
+html.dark input:not([type="button"]):not([type="submit"]):not([type="reset"]),
+html.dark textarea,
+html.dark select {
+  color: #F5F1EB;
+  background-color: transparent;
+}
+html.dark select option {
+  background-color: #0F0D0A;
+  color: #F5F1EB;
+}
+/* Scope bg-white overrides to avoid breaking WhatsApp widget which needs light background */
+html.dark .dark-surface {
+  background-color: #151210 !important;
+}
+
+
+/* =============================================
+   CUSTOM CURSOR (applies to desktop pointer)
+   ============================================= */
+@media (pointer: fine) {
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* =============================================
+   PHOTO CARD HOVER
+   ============================================= */
+.photo-card {
+  position: relative;
+  overflow: hidden;
+}
+.photo-card img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.7s ease;
+  will-change: transform;
+}
+.photo-card:hover img {
+  transform: scale(1.04);
+}
+.photo-card .photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+.photo-card:hover .photo-overlay {
+  opacity: 1;
+}
+.photo-overlay-content {
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+.photo-card:hover .photo-overlay-content {
+  transform: translateY(0);
+}
+
+/* =============================================
+   GOLD SHIMMER TEXT (decorative numbers)
+   ============================================= */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold) 0%,
+    var(--color-gold-vivid) 40%,
+    #F0D070 55%,
+    var(--color-gold-vivid) 70%,
+    var(--color-gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* =============================================
+   CATEGORY CARD
+   ============================================= */
+.category-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.category-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.80) 0%,
+    rgba(0,0,0,0.20) 50%,
+    transparent 100%
+  );
+  z-index: 1;
+  transition: background 0.5s ease;
+}
+.category-card:hover::before {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0.40) 60%,
+    rgba(0,0,0,0.10) 100%
+  );
+}
+.category-card img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.category-card:hover img {
+  transform: scale(1.06);
+}
+
+/* =============================================
+   SECTION SEPARATORS
+   ============================================= */
+.gold-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-gold);
+}
+
+/* =============================================
+   TESTIMONIALS
+   ============================================= */
+.testimonial-line {
+  height: 2px;
+  background-color: rgba(255,255,255,0.15);
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+}
+.testimonial-line-fill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background-color: var(--color-gold);
+  transition: width 0.4s ease;
+}
+
+/* Fine gold frames draw inward as a collection is explored. */
+.category-card::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(232, 201, 107, 0.65);
+  opacity: 0;
+  transform: scale(1.06);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.category-card:is(:hover, :focus-visible)::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.category-card:focus-visible img { transform: scale(1.06); }
+.photo-card:focus-within .photo-overlay { opacity: 1; }
+.photo-card:focus-within .photo-overlay-content { transform: translateY(0); }
+
+.animated-button { position: relative; overflow: hidden; isolation: isolate; }
+.animated-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.25) 50%, transparent 80%);
+  transform: translateX(-150%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+.animated-button:is(:hover, :focus-visible)::after { transform: translateX(150%); }
+.animated-button:is(:hover, :focus-visible) { transform: translateY(-3px); }
+.animated-button:active { transform: translateY(0); }
+
+@media (hover: hover) and (pointer: fine) {
+  .category-explore { opacity: 0; transform: translateY(8px); }
+  .category-card:is(:hover, :focus-visible) .category-explore {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-card::after,
+  .category-card:is(:hover, :focus-visible) img,
+  .photo-card:hover img,
+  .animated-button:is(:hover, :focus-visible),
+  .category-explore { transform: none; }
+  .animated-button::after { display: none; }
+}
+/* Cinematic accents stay behind the photography and never intercept input. */
+.hero-light {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 75% 30%, rgba(201,171,124,.16), transparent 45%);
+  animation: light-drift 9s ease-in-out 2 alternate;
+}
+.hero-frame {
+  position: absolute;
+  inset: 110px 24px 24px;
+  border: 1px solid rgba(255,255,255,.16);
+  pointer-events: none;
+  transform-origin: top left;
+  animation: frame-draw 1.6s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes light-drift {
+  from { transform: translate3d(-3%, 0, 0); opacity: .4; }
+  to { transform: translate3d(3%, 3%, 0); opacity: 1; }
+}
+@keyframes frame-draw {
+  from { clip-path: inset(0 100% 100% 0); opacity: 0; }
+  to { clip-path: inset(0); opacity: 1; }
+}
+.service-photo { position: relative; overflow: hidden; }
+.service-photo img { transition: transform 1.2s cubic-bezier(.22,1,.36,1); }
+.service-photo::after {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(255,255,255,.45);
+  pointer-events: none;
+  transform: scale(.94);
+  opacity: 0;
+  transition: opacity .6s, transform .8s cubic-bezier(.22,1,.36,1);
+}
+.stat-counter::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  margin: 16px auto 0;
+  background: var(--color-gold);
+  transform: scaleX(.35);
+  opacity: .4;
+  transition: transform .5s, opacity .5s;
+}
+.timeline-entry h3 { transition: color .35s, translate .5s; }
+.input-underline { transition: border-color .3s, box-shadow .3s; }
+.input-underline:focus { box-shadow: 0 2px 0 -1px var(--color-gold); }
+.nav-link-hover:focus-visible::after { width: 100%; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .service-photo:hover img { transform: scale(1.055) rotate(.5deg); }
+  .service-photo:hover::after { opacity: 1; transform: scale(1); }
+  .stat-counter:hover::after { transform: scaleX(1); opacity: 1; }
+  .timeline-entry:hover h3 { color: var(--color-gold); translate: 5px 0; }
+  .category-card { transition: translate .5s, box-shadow .5s; }
+  .category-card:hover { translate: 0 -7px; box-shadow: 0 20px 35px -18px rgba(0,0,0,.4); }
+  .photo-card a { display: block; }
+  .photo-card:hover img { filter: saturate(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-light, .hero-frame { animation: none; }
+  .service-photo img, .service-photo::after { transform: none; }
+}
