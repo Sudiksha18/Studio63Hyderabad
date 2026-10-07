@@ -52,3 +52,14 @@ This is a static Vite build — `npm run build` outputs a `dist/` folder that
 can be deployed to Vercel, Netlify, Cloudflare Pages, GitHub Pages, or any
 static host. Since routing uses React Router in browser mode, configure your
 host to redirect all paths to `index.html` (a "SPA fallback").
+
+### Cloudflare Workers
+
+Use `npm run build` as the build command and `npx wrangler deploy` as the
+deploy command. `wrangler.jsonc` publishes `dist` with Cloudflare's built-in
+SPA fallback. The configured Worker name is `studio`; change it if the
+Cloudflare project has a different name.
+
+Netlify's SPA rewrite lives in `netlify.toml`. Do not add the catch-all
+`/* /index.html 200` rule to `public/_redirects`: Cloudflare Workers rejects
+it as a redirect loop.
