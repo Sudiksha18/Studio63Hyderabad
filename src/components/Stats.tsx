@@ -31,7 +31,7 @@ function Counter({ value, index }: { value: string; index: number }) {
       <div className="flex items-start justify-center leading-none mb-3">
         <span
           className="font-display font-bold gold-shimmer"
-          style={{ fontSize: "clamp(3.5rem, 6vw, 5.5rem)", letterSpacing: "-0.04em" }}
+          style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)", letterSpacing: "-0.04em" }}
         >
           <motion.span>{rounded}</motion.span>
           {suffix}
@@ -59,13 +59,13 @@ export default function Stats() {
         Studio in Numbers
       </motion.p>
 
-      <div className="mx-auto max-w-6xl grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-4">
+      <div className="mx-auto max-w-6xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-10 gap-y-10 lg:gap-x-8">
         {siteConfig.stats.map((_, i) => (
-          <div key={i} className="relative">
+          <div key={i} className={`relative ${i === 3 ? "lg:-translate-x-2" : i === 4 ? "lg:translate-x-6" : ""}`}>
             {/* Vertical divider (not on first, desktop only) */}
             {i > 0 && (
               <div
-                className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-12 w-px"
+                className={`hidden lg:block absolute ${i === 4 ? "-left-10" : "-left-4"} top-1/2 -translate-y-1/2 h-12 w-px`}
                 style={{ backgroundColor: "var(--color-beige)" }}
               />
             )}
