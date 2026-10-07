@@ -44,12 +44,12 @@ const categories = [
     imageLabel: "Models editorial portrait",
   },
   {
-    title: "Portraits",
-    tagline: "Your authentic self, in light.",
-    href: "/portfolio",
-    imageSrc: "/images/portfolio/portrait-01.jpg",
-    imageAlt: "Portrait photography",
-    imageLabel: "Portraits natural light",
+    title: "Wildlife",
+    tagline: "Life in the wild, captured in light.",
+    href: "/wildlife",
+    imageSrc: "/images/portfolio/animals/1.jpg",
+    imageAlt: "Wildlife photography",
+    imageLabel: "Wildlife study",
   },
 ];
 
@@ -177,7 +177,7 @@ export default function Home() {
           </div>
 
           {/* Category cards grid */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             {categories.map((cat, i) => (
               <CategoryCard key={cat.title} {...cat} index={i} />
             ))}

@@ -15,6 +15,7 @@ import Weddings from "./pages/Weddings";
 import Maternity from "./pages/Maternity";
 import Newborn from "./pages/Newborn";
 import Models from "./pages/Models";
+import Wildlife from "./pages/Wildlife";
 import Academy from "./pages/Academy";
 import Contact from "./pages/Contact";
 
@@ -45,6 +46,7 @@ export default function App() {
               <Route path="/maternity" element={<Maternity />} />
               <Route path="/newborn" element={<Newborn />} />
               <Route path="/models" element={<Models />} />
+              <Route path="/wildlife" element={<Wildlife />} />
               <Route path="/academy" element={<Academy />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>

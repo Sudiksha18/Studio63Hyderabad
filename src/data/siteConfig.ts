@@ -52,6 +52,7 @@ export const navLinks: NavLink[] = [
   { label: "Maternity", to: "/maternity" },
   { label: "Newborn", to: "/newborn" },
   { label: "Models", to: "/models" },
+  { label: "Wildlife", to: "/wildlife" },
   { label: "Academy", to: "/academy" },
   { label: "Contact", to: "/contact" },
 ];

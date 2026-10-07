@@ -3,7 +3,7 @@ export type PortfolioCategory =
   | "Newborn"
   | "Maternity"
   | "Models"
-  | "Portraits";
+  | "Wildlife";
 
 export type PortfolioImage = {
   id: string;
@@ -80,11 +80,17 @@ export const portfolioImages: PortfolioImage[] = [
   { id: "mo11", category: "Models", title: "A Graceful Greeting", src: "/images/portfolio/Models/DSC_8097.JPG", orientation: "landscape", description: "Folded hands and a gentle smile frame an elegant portrait in green and gold." },
   { id: "mo12", category: "Models", title: "Joy in Every Gesture", src: "/images/portfolio/Models/DSC_8126.JPG", orientation: "landscape", description: "Expressive hands, gold jewellery and a bright smile bring this traditional look to life." },
 
-  // Portraits
-  { id: "p1", category: "Portraits", title: "Natural Soul", src: "/images/portfolio/portrait-01.jpg", orientation: "square", description: "Authentic unposed gaze in diffused natural light" },
-  { id: "p2", category: "Portraits", title: "Between Frames", src: "/images/portfolio/portrait-02.jpg", orientation: "portrait", description: "Artistic monochrome portrait with quiet expression" },
-  { id: "p3", category: "Portraits", title: "Golden Reminiscence", src: "/images/portfolio/portrait-03.jpg", orientation: "landscape", description: "Warm sunset ambient tones in outdoor setting" },
-  { id: "p4", category: "Portraits", title: "Radiant Expression", src: "/images/portfolio/portrait-04.jpg", orientation: "portrait", description: "Luminous, vibrant studio beauty portrait" },
+  // Wildlife
+  { id: "wl1", category: "Wildlife", title: "Wildlife Study 01", src: "/images/portfolio/animals/1.jpg", orientation: "landscape" },
+  { id: "wl2", category: "Wildlife", title: "Wildlife Study 02", src: "/images/portfolio/animals/4.jpg", orientation: "landscape" },
+  { id: "wl3", category: "Wildlife", title: "Wildlife Study 03", src: "/images/portfolio/animals/5.jpg", orientation: "landscape" },
+  { id: "wl4", category: "Wildlife", title: "Wildlife Study 04", src: "/images/portfolio/animals/bidee.jpg", orientation: "landscape" },
+  { id: "wl5", category: "Wildlife", title: "Wildlife Study 05", src: "/images/portfolio/animals/bie.jpg", orientation: "landscape" },
+  { id: "wl6", category: "Wildlife", title: "Wildlife Study 06", src: "/images/portfolio/animals/biggg.jpg", orientation: "landscape" },
+  { id: "wl7", category: "Wildlife", title: "Wildlife Study 07", src: "/images/portfolio/animals/birdw.jpg", orientation: "landscape" },
+  { id: "wl8", category: "Wildlife", title: "Wildlife Study 08", src: "/images/portfolio/animals/birr.jpg", orientation: "landscape" },
+  { id: "wl9", category: "Wildlife", title: "Wildlife Study 09", src: "/images/portfolio/animals/DSC02759_1.jpg", orientation: "landscape" },
+
 ];
 
 export const portfolioCategories: (PortfolioCategory | "All")[] = [
@@ -93,5 +99,5 @@ export const portfolioCategories: (PortfolioCategory | "All")[] = [
   "Newborn",
   "Maternity",
   "Models",
-  "Portraits",
+  "Wildlife",
 ];

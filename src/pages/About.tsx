@@ -61,10 +61,10 @@ export default function About() {
             />
             <div data-cursor="view">
               <PlaceholderImage
-                src="/images/about/studio-camera.png"
-                alt="Camera and photographic prints on a wooden table in a warmly lit studio"
-                label="The art of photography"
-                aspect="aspect-[4/3]"
+                src="/images/portfolio/Sreenu/_DSC2550.jpg"
+                alt="Sreenu of Studio63 Hyderabad"
+                label="Behind the lens at Studio63"
+                aspect="aspect-[3/2]"
               />
             </div>
           </motion.div>
