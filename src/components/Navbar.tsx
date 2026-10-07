@@ -22,6 +22,24 @@ export default function Navbar() {
     setOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1400px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -95,6 +113,8 @@ export default function Navbar() {
 
             <button
               aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
               onClick={() => setOpen((v) => !v)}
               className={`min-[1400px]:hidden p-1 transition-colors ${
                 isTransparent ? "text-white" : "text-[var(--color-charcoal)]"
@@ -110,12 +130,16 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
             key="mobile-menu"
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[60] flex flex-col justify-between grain-overlay"
+            className="fixed inset-0 z-[60] flex flex-col justify-between"
             style={{ backgroundColor: "#080604" }}
           >
             {/* Top bar inside mobile menu */}
