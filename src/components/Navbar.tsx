@@ -23,7 +23,7 @@ export default function Navbar() {
   }, [location.pathname]);
 
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 1400px)");
+    const desktop = window.matchMedia("(min-width: 1280px)");
     const closeOnDesktop = () => {
       if (desktop.matches) setOpen(false);
     };
@@ -58,7 +58,7 @@ export default function Navbar() {
             : "bg-[var(--color-ivory)]/95 dark:bg-[#080604]/90 backdrop-blur-md border-b border-[var(--color-beige)] dark:border-white/5"
         }`}
       >
-        <nav className="mx-auto flex max-w-[1440px] items-center justify-between gap-3 min-[1400px]:gap-8 px-6 py-4 md:px-10 md:py-5">
+        <nav className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 2xl:gap-8 px-6 py-4 md:py-5 2xl:px-10">
           {/* Logo */}
           <Link
             to="/"
@@ -77,13 +77,13 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden min-[1400px]:flex items-center gap-6 whitespace-nowrap">
+          <ul className="hidden xl:flex items-center gap-3 2xl:gap-6 whitespace-nowrap">
             {navLinks.map((link) => (
               <li key={link.to}>
                 <RouterNavLink
                   to={link.to}
                   className={({ isActive }) =>
-                    `nav-link-hover font-sans text-[12px] tracking-widest uppercase transition-all duration-300 ${
+                    `nav-link-hover font-sans text-[11px] 2xl:text-[12px] tracking-widest uppercase transition-all duration-300 ${
                       isTransparent ? "text-white/80 hover:text-white" : "text-[var(--color-charcoal)] hover:text-[var(--color-gold)]"
                     } ${isActive ? (isTransparent ? "text-white" : "text-[var(--color-gold)]") : ""}`
                   }
@@ -116,7 +116,7 @@ export default function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-navigation"
               onClick={() => setOpen((v) => !v)}
-              className={`min-[1400px]:hidden p-1 transition-colors ${
+              className={`xl:hidden p-1 transition-colors ${
                 isTransparent ? "text-white" : "text-[var(--color-charcoal)]"
               }`}
             >
@@ -139,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[60] flex flex-col justify-between"
+            className="fixed inset-0 z-[60] flex flex-col justify-between xl:hidden"
             style={{ backgroundColor: "#080604" }}
           >
             {/* Top bar inside mobile menu */}
