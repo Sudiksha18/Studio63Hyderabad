@@ -4,7 +4,7 @@ import PlaceholderImage from "../components/PlaceholderImage";
 import CTASection from "../components/CTASection";
 import { portfolioImages } from "../data/portfolio";
 
-const galleryImages = portfolioImages.filter((i) => i.category === "Newborn").slice(0, 6);
+const galleryImages = portfolioImages.filter((i) => i.category === "Newborn");
 
 const steps = [
   { num: "01", title: "Pre shoot Planning", desc: "We coordinate everything, props, wraps, timing, so the session flows peacefully." },
@@ -25,7 +25,7 @@ export default function Newborn() {
       <section className="relative h-[80vh] min-h-[520px] overflow-hidden">
         <div className="absolute inset-0" data-cursor="view">
           <PlaceholderImage
-            src="/images/portfolio/newborn-02.jpg"
+            src="/images/portfolio/newborn/48.jpg"
             alt="Newborn photography by Studio63"
             label="Newborn hero peaceful sleep portrait"
             aspect="aspect-auto"

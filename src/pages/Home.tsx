@@ -8,7 +8,7 @@ import CTASection from "../components/CTASection";
 import PlaceholderImage from "../components/PlaceholderImage";
 import MarqueeStrip from "../components/MarqueeStrip";
 import CategoryCard from "../components/CategoryCard";
-import { portfolioImages } from "../data/portfolio";
+import { portfolioCategories, portfolioImages } from "../data/portfolio";
 
 const categories = [
   {
@@ -31,7 +31,7 @@ const categories = [
     title: "Newborn",
     tagline: "The most tender light.",
     href: "/newborn",
-    imageSrc: "/images/portfolio/newborn-02.jpg",
+    imageSrc: "/images/portfolio/newborn/48.jpg",
     imageAlt: "Newborn photography",
     imageLabel: "Newborn peaceful sleep",
   },
@@ -54,7 +54,12 @@ const categories = [
 ];
 
 export default function Home() {
-  const preview = portfolioImages.filter((image) => image.category === "Wedding");
+  const categoryPreviews = portfolioCategories
+    .filter((category) => category !== "All")
+    .map((category) => portfolioImages.filter((image) => image.category === category).slice(0, 3));
+  const preview = [0, 1, 2].flatMap((index) =>
+    categoryPreviews.flatMap((images) => images[index] ? [images[index]] : [])
+  );
 
   return (
     <div>
@@ -122,7 +127,7 @@ export default function Home() {
             />
             <div data-cursor="view">
               <PlaceholderImage
-                src="/images/about/behind-the-scenes.jpg"
+                src="/images/academy/training-session.jpg"
                 alt="Studio63#Hyderabad behind the scenes"
                 label="Behind the scenes portrait session"
                 aspect="aspect-[4/5]"

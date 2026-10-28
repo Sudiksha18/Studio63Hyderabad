@@ -92,7 +92,7 @@ export default function Hero() {
         </motion.p>
 
         {/* Main content — vertically centered-bottom */}
-        <div className="flex flex-col justify-end flex-1 mt-auto">
+        <div className="flex flex-col justify-end flex-1 mt-auto md:translate-x-8 lg:translate-x-16">
 
           {/* Headline — clip-path word reveal */}
           <div className="overflow-hidden mb-1">
@@ -104,7 +104,7 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
               >
-                Stories.
+                Stories
               </motion.span>
               <motion.span
                 className="inline-block mr-[0.15em]"
@@ -113,7 +113,7 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
               >
-                Emotions.
+                Emotions
               </motion.span>
             </h1>
           </div>
@@ -129,7 +129,7 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
               >
-                Moments.
+                Moments
               </motion.span>
             </h1>
           </div>
@@ -139,7 +139,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0 }}
-            className="font-sans text-sm text-white/70 mb-10 max-w-sm leading-relaxed"
+            className="font-sans text-sm text-white/70 mb-10 mx-auto max-w-sm text-center leading-relaxed"
           >
             Photography &amp; Visual Stories · Begumpet, Hyderabad
           </motion.p>
@@ -149,7 +149,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.15 }}
-            className="flex flex-wrap gap-4 pointer-events-auto"
+            className="flex flex-wrap justify-center gap-4 pointer-events-auto"
           >
             <Magnetic strength={0.3}>
               <Link
@@ -191,7 +191,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: -14 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 1.3 }}
-          className="absolute bottom-10 left-6 md:left-14 flex items-center gap-3"
+          className="absolute bottom-10 inset-x-6 md:inset-x-14 md:translate-x-8 lg:translate-x-16 flex items-center justify-center gap-3"
         >
           {["Wedding", "Newborn", "Maternity", "Fashion"].map((cat, i) => (
             <span

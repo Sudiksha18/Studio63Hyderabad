@@ -16,8 +16,6 @@ export type PortfolioImage = {
 
 export const portfolioImages: PortfolioImage[] = [
   // Weddings
-  { id: "w22", category: "Wedding", title: "Wedding Blessings", src: "/images/portfolio/82.jpg", orientation: "landscape" },
-  { id: "w23", category: "Wedding", title: "Together Down the Aisle", src: "/images/portfolio/152.jpg", orientation: "landscape" },
   { id: "w24", category: "Wedding", title: "A Ring of Promise", src: "/images/portfolio/173.jpg", orientation: "landscape" },
   { id: "w7", category: "Wedding", title: "Tender Embrace", src: "/images/portfolio/1Q6A3062.jpg", orientation: "landscape" },
   { id: "w8", category: "Wedding", title: "Garden Arrival", src: "/images/portfolio/1Q6A3180.jpg", orientation: "portrait" },
@@ -51,9 +49,14 @@ export const portfolioImages: PortfolioImage[] = [
   { id: "m12", category: "Maternity", title: "Love Among Peacock Feathers", src: "/images/portfolio/maternity/44.jpg", orientation: "landscape" },
 
   // Newborn
-  { id: "n1", category: "Newborn", title: "Rustic Bowl Slumber", src: "/images/portfolio/newborn-01.jpg", orientation: "landscape", description: "Warm mohair knitted wrap in hand-carved wood" },
-  { id: "n2", category: "Newborn", title: "Tender Tiny Dreams", src: "/images/portfolio/newborn-02.jpg", orientation: "portrait", description: "Peaceful sleep in soothing cream tones" },
-  { id: "n3", category: "Newborn", title: "Little Hands, Big World", src: "/images/portfolio/newborn-03.jpg", orientation: "landscape", description: "Close-up macro detail of baby toes and fingers" },
+  { id: "n15", category: "Newborn", title: "Newborn Portrait 01", src: "/images/portfolio/newborn/38.jpg", orientation: "portrait" },
+  { id: "n16", category: "Newborn", title: "Newborn Portrait 02", src: "/images/portfolio/newborn/48.jpg", orientation: "landscape" },
+  { id: "n17", category: "Newborn", title: "Newborn Portrait 03", src: "/images/portfolio/newborn/53.jpg", orientation: "landscape" },
+  { id: "n18", category: "Newborn", title: "Newborn Portrait 04", src: "/images/portfolio/newborn/71.jpg", orientation: "landscape" },
+  { id: "n19", category: "Newborn", title: "Newborn Portrait 05", src: "/images/portfolio/newborn/90.jpg", orientation: "landscape" },
+  { id: "n20", category: "Newborn", title: "Newborn Portrait 06", src: "/images/portfolio/newborn/98.jpg", orientation: "landscape" },
+  { id: "n21", category: "Newborn", title: "Newborn Portrait 07", src: "/images/portfolio/newborn/103.jpg", orientation: "landscape" },
+  { id: "n22", category: "Newborn", title: "Newborn Portrait 08", src: "/images/portfolio/newborn/136.jpg", orientation: "landscape" },
   { id: "n5", category: "Newborn", title: "Alpine Adventure", src: "/images/portfolio/baby/3.jpg", orientation: "portrait", description: "A tiny explorer nestled in a snowy mountain scene" },
   { id: "n6", category: "Newborn", title: "Little Doctor Dreams", src: "/images/portfolio/baby/12.jpg", orientation: "square", description: "A peaceful newborn styled with a tiny stethoscope" },
   { id: "n7", category: "Newborn", title: "Peacock Nest", src: "/images/portfolio/baby/35.jpg", orientation: "landscape", description: "A sleeping baby wrapped in warm gold and peacock blue" },
@@ -68,17 +71,18 @@ export const portfolioImages: PortfolioImage[] = [
   // Models & Fashion
   { id: "mo13", category: "Models", title: "Curls and Confidence", src: "/images/portfolio/Models/DSC04441.JPG", orientation: "portrait", description: "A close-up studio portrait pairs soft curls with black satin and a confident gaze." },
   { id: "mo14", category: "Models", title: "Golden Glamour", src: "/images/portfolio/Models/DSC04462.JPG", orientation: "portrait", description: "A full-length portrait of a shimmering gold gown, finished with a sparkling tiara." },
-  { id: "mo15", category: "Models", title: "Playful in Pink", src: "/images/portfolio/Models/DSC_5116.JPG", orientation: "portrait", description: "Pink trousers, a colourful tie-front top and a wide-brimmed hat bring playful energy to the studio." },
-  { id: "mo16", category: "Models", title: "A Moment in Marigold", src: "/images/portfolio/Models/DSC_5233.JPG", orientation: "landscape", description: "A relaxed reclining pose pairs a flowing marigold saree with a vivid pink blouse." },
-  { id: "mo17", category: "Models", title: "Sunflower Muse", src: "/images/portfolio/Models/DSC_5289.JPG", orientation: "portrait", description: "A sunflower adds a playful focal point to a marigold saree and pink bow-detail blouse." },
-  { id: "mo18", category: "Models", title: "A Turn of Grace", src: "/images/portfolio/Models/DSC_8087.JPG", orientation: "landscape", description: "An over-the-shoulder smile and a graceful hand gesture highlight a green and orange traditional ensemble." },
   { id: "mo6", category: "Models", title: "Poise in Black", src: "/images/portfolio/Models/DSC04432.JPG", orientation: "portrait", description: "Soft curls and a black satin outfit in a quietly confident studio portrait." },
   { id: "mo7", category: "Models", title: "Crowned in Gold", src: "/images/portfolio/Models/DSC04460.JPG", orientation: "portrait", description: "A sparkling gold gown and tiara bring a touch of glamour to the studio." },
   { id: "mo8", category: "Models", title: "The Statement Suit", src: "/images/portfolio/Models/DSC_4803.JPG", orientation: "portrait", description: "A tailored black suit, statement jewellery and pink platform heels create a bold fashion look." },
   { id: "mo9", category: "Models", title: "Editorial Edge", src: "/images/portfolio/Models/DSC_4810.JPG", orientation: "portrait", description: "A poised profile pairs sharp black tailoring with sculptural silver jewellery." },
-  { id: "mo10", category: "Models", title: "Tradition in Colour", src: "/images/portfolio/Models/DSC_8040.JPG", orientation: "landscape", description: "Rich green and orange traditional attire stands out against softly draped curtains." },
-  { id: "mo11", category: "Models", title: "A Graceful Greeting", src: "/images/portfolio/Models/DSC_8097.JPG", orientation: "landscape", description: "Folded hands and a gentle smile frame an elegant portrait in green and gold." },
-  { id: "mo12", category: "Models", title: "Joy in Every Gesture", src: "/images/portfolio/Models/DSC_8126.JPG", orientation: "landscape", description: "Expressive hands, gold jewellery and a bright smile bring this traditional look to life." },
+
+  { id: "mo15", category: "Models", title: "Fashion Portrait 01", src: "/images/portfolio/Models_2/DSC03776.JPG", orientation: "landscape" },
+  { id: "mo16", category: "Models", title: "Fashion Portrait 02", src: "/images/portfolio/Models_2/DSC05230.JPG", orientation: "landscape" },
+  { id: "mo17", category: "Models", title: "Fashion Portrait 03", src: "/images/portfolio/Models_2/DSC_0078.JPG", orientation: "landscape" },
+  { id: "mo18", category: "Models", title: "Jewellery Portrait", src: "/images/portfolio/Models_2/jewellery photo.jpg", orientation: "portrait" },
+  { id: "mo19", category: "Models", title: "Fashion Portrait 04", src: "/images/portfolio/Models_2/PVL09305.JPG", orientation: "landscape" },
+  { id: "mo20", category: "Models", title: "Fashion Portrait 05", src: "/images/portfolio/Models_2/PVL09384.JPG", orientation: "landscape" },
+  { id: "mo21", category: "Models", title: "Fashion Portrait 06", src: "/images/portfolio/Models_2/PVL09404.JPG", orientation: "landscape" },
 
   // Wildlife
   { id: "wl1", category: "Wildlife", title: "Wildlife Study 01", src: "/images/portfolio/animals/1.jpg", orientation: "landscape" },

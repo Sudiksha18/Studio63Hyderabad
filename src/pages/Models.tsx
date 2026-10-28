@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useVelocity, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import PlaceholderImage from "../components/PlaceholderImage";
 import CTASection from "../components/CTASection";
 import { portfolioImages } from "../data/portfolio";
@@ -15,10 +15,6 @@ const steps = [
 
 export default function Models() {
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, { damping: 50, stiffness: 400 });
-  const skewY = useTransform(smoothVelocity, [-800, 800], [-1.5, 1.5]);
 
   return (
     <div className="bg-[var(--color-ivory)] dark:bg-[#080604]">
@@ -102,7 +98,7 @@ export default function Models() {
       <section className="px-6 md:px-14 py-10 pb-24">
         <div className="mx-auto max-w-6xl">
           <p className="text-editorial-label mb-8" style={{ color: "var(--color-gold)" }}>Gallery</p>
-          <motion.div className="columns-2 md:columns-3 gap-3 space-y-3" style={{ skewY }}>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {galleryImages.map((img, i) => (
               <motion.button
                 key={img.id}
@@ -114,14 +110,14 @@ export default function Models() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="relative block w-full break-inside-avoid overflow-hidden cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-gold)]"
+                className="relative block w-full min-w-0 overflow-hidden cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-gold)]"
                 data-cursor="view"
               >
                 <PlaceholderImage
                   src={img.src}
                   alt={img.description ?? img.title}
-                  aspect="aspect-auto"
-                  className="!h-auto"
+                  aspect="aspect-[2/3]"
+                  className="!h-auto object-top"
                 />
                 {selectedImageId === img.id && (
                   <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-4 pb-4 pt-10 font-display text-lg text-white">
@@ -130,7 +126,7 @@ export default function Models() {
                 )}
               </motion.button>
             ))}
-          </motion.div>
+          </div>
           <div className="mt-10">
             <Link to="/portfolio" className="font-sans text-[12px] tracking-widest uppercase text-[var(--color-brown)] hover:text-[var(--color-gold)] transition-colors">
               View full portfolio →
