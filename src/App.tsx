@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import LoadingSkeleton from "./components/LoadingSkeleton";
 import { MotionConfig } from "framer-motion";
 import ScrollProgress from "./components/ScrollProgress";
 import Navbar from "./components/Navbar";
@@ -8,16 +9,16 @@ import WhatsAppWidget from "./components/WhatsAppWidget";
 import CustomCursor from "./components/CustomCursor";
 import PageTransition from "./components/PageTransition";
 import SmoothScroll from "./components/SmoothScroll";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Portfolio from "./pages/Portfolio";
-import Weddings from "./pages/Weddings";
-import Maternity from "./pages/Maternity";
-import Newborn from "./pages/Newborn";
-import Models from "./pages/Models";
-import Wildlife from "./pages/Wildlife";
-import Academy from "./pages/Academy";
-import Contact from "./pages/Contact";
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Portfolio = lazy(() => import("./pages/Portfolio"));
+const Weddings = lazy(() => import("./pages/Weddings"));
+const Maternity = lazy(() => import("./pages/Maternity"));
+const Newborn = lazy(() => import("./pages/Newborn"));
+const Models = lazy(() => import("./pages/Models"));
+const Wildlife = lazy(() => import("./pages/Wildlife"));
+const Academy = lazy(() => import("./pages/Academy"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,6 +39,7 @@ export default function App() {
         <Navbar />
         <main className="flex-1">
           <PageTransition>
+            <Suspense fallback={<LoadingSkeleton />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -50,6 +52,7 @@ export default function App() {
               <Route path="/academy" element={<Academy />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
+            </Suspense>
           </PageTransition>
         </main>
         <Footer />

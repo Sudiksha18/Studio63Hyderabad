@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, Mail, MessageCircle, MapPin, Navigation } from "lucide-react";
-import WhatsAppBookingStudio, { type ServiceType } from "../components/WhatsAppBookingStudio";
-import ContactForm from "../components/ContactForm";
+import type { ServiceType } from "../components/WhatsAppBookingStudio";
+import LoadingSkeleton from "../components/LoadingSkeleton";
+const WhatsAppBookingStudio = lazy(() => import("../components/WhatsAppBookingStudio"));
+const ContactForm = lazy(() => import("../components/ContactForm"));
 import { siteConfig } from "../data/siteConfig";
 
 
@@ -207,6 +209,7 @@ export default function Contact() {
           transition={{ duration: 0.4 }}
           className="max-w-5xl mx-auto"
         >
+          <Suspense fallback={<LoadingSkeleton form />}>
           {activeTab === "studio" ? (
             <WhatsAppBookingStudio initialService={validService} />
           ) : (
@@ -214,6 +217,7 @@ export default function Contact() {
               <ContactForm />
             </div>
           )}
+          </Suspense>
         </motion.div>
       </div>
     </div>

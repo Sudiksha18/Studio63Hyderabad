@@ -7,6 +7,7 @@ type Props = {
   label?: string;
   className?: string;
   aspect?: string;
+  loading?: "lazy" | "eager";
 };
 
 /**
@@ -20,10 +21,13 @@ export default function PlaceholderImage({
   label,
   className = "",
   aspect = "aspect-[4/5]",
+  loading = "lazy",
 }: Props) {
-  const [errored, setErrored] = useState(!src);
+  const [failedSrc, setFailedSrc] = useState<string>();
+  const [loadedSrc, setLoadedSrc] = useState<string>();
+  const loaded = loadedSrc === src;
 
-  if (errored || !src) {
+  if (failedSrc === src || !src) {
     return (
       <div
         className={`relative overflow-hidden ${aspect} ${className}`}
@@ -49,12 +53,22 @@ export default function PlaceholderImage({
   }
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      className={`object-cover w-full h-full ${aspect} ${className}`}
-      onError={() => setErrored(true)}
-    />
+    <div className={`relative overflow-hidden w-full h-full ${aspect} ${className}`} aria-busy={!loaded}>
+      {!loaded && <div aria-hidden="true" className="skeleton absolute inset-0" />}
+      <img
+        key={src}
+        ref={(image) => {
+          if (image?.complete && image.naturalWidth > 0) setLoadedSrc(src);
+        }}
+        src={src}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+        fetchPriority={loading === "eager" ? "high" : "auto"}
+        className={`object-cover w-full h-full ${aspect} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        onLoad={() => setLoadedSrc(src)}
+        onError={() => setFailedSrc(src)}
+      />
+    </div>
   );
 }

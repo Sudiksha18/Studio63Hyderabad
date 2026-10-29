@@ -60,6 +60,7 @@ export default function Hero() {
           <div className="absolute inset-0 -z-10">
             <PlaceholderImage
               src="/images/hero/hero-main.jpg"
+              loading="eager"
               alt="Cinematic photograph by Studio63#Hyderabad"
               label="Hero Video or Photo full bleed"
               className="w-full h-full"
