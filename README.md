@@ -57,7 +57,7 @@ host to redirect all paths to `index.html` (a "SPA fallback").
 
 Use `npm run build` as the build command and `npx wrangler deploy` as the
 deploy command. `wrangler.jsonc` publishes `dist` with Cloudflare's built-in
-SPA fallback. The configured Worker name is `studio`; change it if the
+SPA fallback. The configured Worker name is `studio63hyderabad`; change it if the
 Cloudflare project has a different name.
 
 Netlify's SPA rewrite lives in `netlify.toml`. Do not add the catch-all
