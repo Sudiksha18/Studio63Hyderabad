@@ -15,7 +15,7 @@ export default function CTASection() {
       {/* Background */}
       <motion.div className="absolute -inset-y-[10%] inset-x-0" style={{ y: reducedMotion ? 0 : y }}>
         <PlaceholderImage
-          src="/images/cta/cta-banner.jpg"
+          src="/images/cta/cta-banner.webp"
           alt="Studio63 book your session"
           label="Full width CTA photograph"
           aspect="aspect-auto"

@@ -61,7 +61,7 @@ export default function About() {
             />
             <div data-cursor="view">
               <PlaceholderImage
-                src="/images/portfolio/Sreenu/IMG_20261002_163855604_HDR_PORTRAIT.jpg.jpeg"
+                src="/images/portfolio/Sreenu/IMG_20261002_163855604_HDR_PORTRAIT.jpg.webp"
                 alt="Sreenu of Studio63 Hyderabad"
                 label="Behind the lens at Studio63"
                 aspect="aspect-[3/4]"

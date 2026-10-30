@@ -8,12 +8,20 @@ type Props = {
   className?: string;
   aspect?: string;
   loading?: "lazy" | "eager";
+  /** Responsive sizes hint – defaults to a sensible value for most uses */
+  sizes?: string;
 };
 
 /**
  * Renders a real photograph when `src` resolves, otherwise falls back to an
  * elegant placeholder that works in both light and dark modes.
  * Drop real images into /public/images/... and point src at the path.
+ *
+ * Performance features:
+ * - Eager images use fetchPriority="high" so the browser prioritises them
+ * - Lazy images use native browser lazy-loading (no JS overhead)
+ * - `decoding="async"` keeps the main thread unblocked
+ * - Skeleton shimmer disappears the moment the image paints
  */
 export default function PlaceholderImage({
   src,
@@ -22,6 +30,7 @@ export default function PlaceholderImage({
   className = "",
   aspect = "aspect-[4/5]",
   loading = "lazy",
+  sizes = "(max-width: 768px) 100vw, 50vw",
 }: Props) {
   const [failedSrc, setFailedSrc] = useState<string>();
   const [loadedSrc, setLoadedSrc] = useState<string>();
@@ -53,7 +62,11 @@ export default function PlaceholderImage({
   }
 
   return (
-    <div className={`relative overflow-hidden w-full h-full ${aspect} ${className}`} aria-busy={!loaded}>
+    <div
+      className={`relative overflow-hidden w-full h-full ${aspect} ${className}`}
+      aria-busy={!loaded}
+      style={{ contentVisibility: loading === "lazy" ? "auto" : "visible" }}
+    >
       {!loaded && <div aria-hidden="true" className="skeleton absolute inset-0" />}
       <img
         key={src}
@@ -64,7 +77,8 @@ export default function PlaceholderImage({
         alt={alt}
         loading={loading}
         decoding="async"
-        fetchPriority={loading === "eager" ? "high" : "auto"}
+        fetchPriority={loading === "eager" ? "high" : "low"}
+        sizes={sizes}
         className={`object-cover w-full h-full ${aspect} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
         onLoad={() => setLoadedSrc(src)}
         onError={() => setFailedSrc(src)}

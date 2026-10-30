@@ -1,5 +1,5 @@
-import { useRef, useState, type ReactNode, type MouseEvent } from "react";
-import { motion, useSpring } from "framer-motion";
+import { useRef, type ReactNode } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface Props {
   children: ReactNode;
@@ -9,38 +9,40 @@ interface Props {
   className?: string;
 }
 
+/**
+ * Magnetic — cursor-attracted element using MotionValues only.
+ * Zero React re-renders: position is driven by framer-motion's
+ * internal animation loop, not useState.
+ */
 export default function Magnetic({ children, strength = 0.3, className = "inline-block" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouse = (e: MouseEvent) => {
+  // MotionValues: bypass React reconciler entirely — no re-renders
+  const xRaw = useMotionValue(0);
+  const yRaw = useMotionValue(0);
+
+  const x = useSpring(xRaw, { stiffness: 150, damping: 15, mass: 0.1 });
+  const y = useSpring(yRaw, { stiffness: 150, damping: 15, mass: 0.1 });
+
+  const handleMouse = (e: React.MouseEvent) => {
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
-    
-    // Calculate distance from center of element
-    const middleX = clientX - (left + width / 2);
-    const middleY = clientY - (top + height / 2);
-    
-    setPosition({ x: middleX * strength, y: middleY * strength });
+    xRaw.set((clientX - (left + width / 2)) * strength);
+    yRaw.set((clientY - (top + height / 2)) * strength);
   };
 
   const reset = () => {
-    setPosition({ x: 0, y: 0 });
+    xRaw.set(0);
+    yRaw.set(0);
   };
-
-  const { x, y } = position;
-  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
-  
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
 
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
-      style={{ x: springX, y: springY }}
+      style={{ x, y }}
       className={className}
     >
       {children}

@@ -15,7 +15,7 @@ const categories = [
     title: "Weddings",
     tagline: "Where two stories become one.",
     href: "/weddings",
-    imageSrc: "/images/portfolio/1Q6A3062.jpg",
+    imageSrc: "/images/portfolio/1Q6A3062.webp",
     imageAlt: "Wedding photography",
     imageLabel: "Wedding couple portrait",
   },
@@ -23,7 +23,7 @@ const categories = [
     title: "Maternity",
     tagline: "Celebrating new life and grace.",
     href: "/maternity",
-    imageSrc: "/images/portfolio/maternity/1.jpg",
+    imageSrc: "/images/portfolio/maternity/1.webp",
     imageAlt: "Maternity photography",
     imageLabel: "Peacock Feather Grace",
   },
@@ -31,7 +31,7 @@ const categories = [
     title: "Newborn",
     tagline: "The most tender light.",
     href: "/newborn",
-    imageSrc: "/images/portfolio/newborn/48.jpg",
+    imageSrc: "/images/portfolio/newborn/48.webp",
     imageAlt: "Newborn photography",
     imageLabel: "Newborn peaceful sleep",
   },
@@ -39,7 +39,7 @@ const categories = [
     title: "Models",
     tagline: "Editorial. Bold. Unforgettable.",
     href: "/models",
-    imageSrc: "/images/portfolio/Models/DSC04441.JPG",
+    imageSrc: "/images/portfolio/Models/DSC04441.webp",
     imageAlt: "Fashion & model photography",
     imageLabel: "Models editorial portrait",
   },
@@ -47,7 +47,7 @@ const categories = [
     title: "Wildlife",
     tagline: "Life in the wild, captured in light.",
     href: "/wildlife",
-    imageSrc: "/images/portfolio/animals/1.jpg",
+    imageSrc: "/images/portfolio/animals/1.webp",
     imageAlt: "Wildlife photography",
     imageLabel: "Wildlife study",
   },
@@ -127,7 +127,7 @@ export default function Home() {
             />
             <div data-cursor="view">
               <PlaceholderImage
-                src="/images/academy/training-session.jpg"
+                src="/images/academy/training-session.webp"
                 alt="Studio63#Hyderabad behind the scenes"
                 label="Behind the scenes portrait session"
                 aspect="aspect-[4/5]"

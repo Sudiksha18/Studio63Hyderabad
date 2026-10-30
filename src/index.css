@@ -187,14 +187,14 @@ h1, h2, h3, h4, .font-display {
 
 /* Marquee — infinite horizontal scroll */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 /* Reverse marquee */
 @keyframes marquee-reverse {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
 }
 
 /* Fade + slide up (for section reveals) */
@@ -356,14 +356,18 @@ html.dark .dark-surface {
 .photo-card {
   position: relative;
   overflow: hidden;
+  /* GPU layer for the card container */
+  transform: translateZ(0);
 }
 .photo-card img {
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               filter 0.7s ease;
   will-change: transform;
+  /* Promote to own compositor layer */
+  transform: translateZ(0);
 }
 .photo-card:hover img {
-  transform: scale(1.04);
+  transform: scale(1.04) translateZ(0);
 }
 .photo-card .photo-overlay {
   position: absolute;
@@ -526,6 +530,9 @@ html.dark .dark-surface {
   pointer-events: none;
   background: radial-gradient(ellipse at 75% 30%, rgba(201,171,124,.16), transparent 45%);
   animation: light-drift 9s ease-in-out 2 alternate;
+  /* GPU compositor layer */
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 .hero-frame {
   position: absolute;
@@ -534,6 +541,9 @@ html.dark .dark-surface {
   pointer-events: none;
   transform-origin: top left;
   animation: frame-draw 1.6s cubic-bezier(.22,1,.36,1) both;
+  /* GPU compositor layer */
+  will-change: clip-path, opacity;
+  transform: translateZ(0);
 }
 @keyframes light-drift {
   from { transform: translate3d(-3%, 0, 0); opacity: .4; }

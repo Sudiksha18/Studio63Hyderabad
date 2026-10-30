@@ -25,7 +25,7 @@ export default function Weddings() {
       <section className="relative h-[80vh] min-h-[520px] overflow-hidden">
         <div className="absolute inset-0" data-cursor="view">
           <PlaceholderImage
-            src="/images/portfolio/1Q6A3062.jpg"
+            src="/images/portfolio/1Q6A3062.webp"
             alt="Wedding photography by Studio63"
             label="Wedding hero couple portrait at golden hour"
             aspect="aspect-auto"

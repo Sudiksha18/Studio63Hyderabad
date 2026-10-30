@@ -25,7 +25,7 @@ export default function Newborn() {
       <section className="relative h-[80vh] min-h-[520px] overflow-hidden">
         <div className="absolute inset-0" data-cursor="view">
           <PlaceholderImage
-            src="/images/portfolio/newborn/48.jpg"
+            src="/images/portfolio/newborn/48.webp"
             alt="Newborn photography by Studio63"
             label="Newborn hero peaceful sleep portrait"
             aspect="aspect-auto"

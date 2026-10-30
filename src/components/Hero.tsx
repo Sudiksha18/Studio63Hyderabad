@@ -50,7 +50,7 @@ export default function Hero() {
             loop
             playsInline
             className="absolute inset-0 w-full h-full object-cover opacity-80"
-            poster="/images/hero/hero-main.jpg"
+            poster="/images/hero/hero-main.webp"
           >
             {/* Provide a real URL when available. A placeholder video is omitted here for stability, using poster fallback */}
             <source src="/videos/hero-cinematic.mp4" type="video/mp4" />
@@ -59,7 +59,7 @@ export default function Hero() {
           {/* Fallback image is inherently loaded via poster above, but we can also layer the PlaceholderImage if video fails completely */}
           <div className="absolute inset-0 -z-10">
             <PlaceholderImage
-              src="/images/hero/hero-main.jpg"
+              src="/images/hero/hero-main.webp"
               loading="eager"
               alt="Cinematic photograph by Studio63#Hyderabad"
               label="Hero Video or Photo full bleed"

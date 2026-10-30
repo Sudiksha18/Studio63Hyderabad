@@ -1,22 +1,46 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { testimonials } from "../data/testimonials";
+
+// Memoized slide to prevent re-render on parent state changes
+const TestimonialSlide = memo(({ quote, role }: { quote: string; role: string }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 16 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -16 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+  >
+    <p
+      className="font-display font-light italic text-[var(--color-charcoal)] leading-relaxed mb-6"
+      style={{ fontSize: "clamp(1.2rem, 3vw, 2rem)", letterSpacing: "-0.01em" }}
+    >
+      "{quote}"
+    </p>
+    <p className="font-sans text-xs tracking-widest uppercase text-[var(--color-brown)]">
+      {role}
+    </p>
+  </motion.div>
+));
+TestimonialSlide.displayName = "TestimonialSlide";
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const item = testimonials[index];
 
+  // useCallback: stable reference prevents useEffect from re-running
+  const advance = useCallback(() => {
+    setIndex((prev) => (prev + 1) % testimonials.length);
+  }, []);
+
+  const go = useCallback((dir: 1 | -1) => {
+    setIndex((prev) => (prev + dir + testimonials.length) % testimonials.length);
+  }, []);
+
   // Auto-advance every 6 seconds
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIndex((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    const timer = setTimeout(advance, 6000);
     return () => clearTimeout(timer);
-  }, [index]);
-
-  const go = (dir: 1 | -1) => {
-    setIndex((prev) => (prev + dir + testimonials.length) % testimonials.length);
-  };
+  }, [index, advance]);
 
   return (
     <section className="relative py-28 px-6 md:px-14 overflow-hidden bg-[var(--color-offwhite)] dark:bg-[#0A0806]">
@@ -44,23 +68,7 @@ export default function Testimonials() {
         {/* Quote */}
         <div className="relative min-h-[200px] flex flex-col items-center justify-center text-center">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <p
-                className="font-display font-light italic text-[var(--color-charcoal)] leading-relaxed mb-6"
-                style={{ fontSize: "clamp(1.2rem, 3vw, 2rem)", letterSpacing: "-0.01em" }}
-              >
-                "{item.quote}"
-              </p>
-              <p className="font-sans text-xs tracking-widest uppercase text-[var(--color-brown)]">
-                {item.role}
-              </p>
-            </motion.div>
+            <TestimonialSlide key={index} quote={item.quote} role={item.role} />
           </AnimatePresence>
         </div>
 

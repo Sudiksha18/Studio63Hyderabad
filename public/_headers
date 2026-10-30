@@ -1,0 +1,34 @@
+# Cloudflare Pages _headers file
+# Serves correct cache and security headers for all assets
+
+# ─── Immutable assets (Vite hashes filenames, safe for 1-year cache) ───────────
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# ─── Images — long cache, browser can revalidate ────────────────────────────────
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# ─── HTML — never cache (SPA entry point, must always be fresh) ─────────────────
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# ─── Root (/) resolves to index.html via SPA redirect ───────────────────────────
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+
+# ─── Fonts (if self-hosted in future) ───────────────────────────────────────────
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *

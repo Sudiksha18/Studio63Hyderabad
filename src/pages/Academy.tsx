@@ -73,7 +73,7 @@ export default function Academy() {
               style={{ border: "1px solid var(--color-gold)", opacity: 0.2 }}
             />
             <PlaceholderImage
-              src="/images/academy/training-session.jpg"
+              src="/images/academy/training-session.webp"
               alt="Photography training session"
               label="Training / classroom photograph"
               aspect="aspect-[4/5]"

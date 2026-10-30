@@ -23,7 +23,7 @@ export default function Models() {
       <section className="relative h-[80vh] min-h-[520px] overflow-hidden">
         <div className="absolute inset-0" data-cursor="view">
           <PlaceholderImage
-            src="/images/portfolio/Models/DSC04441.JPG"
+            src="/images/portfolio/Models/DSC04441.webp"
             alt="Fashion & model photography by Studio63"
             label="Models hero editorial portrait"
             aspect="aspect-auto"

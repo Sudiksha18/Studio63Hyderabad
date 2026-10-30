@@ -1,8 +1,9 @@
 import { motion, useInView, useReducedMotion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 import { siteConfig } from "../data/siteConfig";
 
-function Counter({ value, index }: { value: string; index: number }) {
+// Memoized — only re-renders if value/index props change (they never do after mount)
+const Counter = memo(function Counter({ value, index }: { value: string; index: number }) {
   const ref = useRef(null);
   const reducedMotion = useReducedMotion();
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -42,7 +43,7 @@ function Counter({ value, index }: { value: string; index: number }) {
       </p>
     </motion.div>
   );
-}
+});
 
 export default function Stats() {
   return (
