@@ -47,7 +47,7 @@ const categories = [
     title: "Wildlife",
     tagline: "Life in the wild, captured in light.",
     href: "/wildlife",
-    imageSrc: "/images/portfolio/animals/1.webp",
+    imageSrc: "/images/portfolio/animals/1.jpg",
     imageAlt: "Wildlife photography",
     imageLabel: "Wildlife study",
   },

@@ -25,6 +25,7 @@ export default function Maternity() {
       <section className="relative h-[80vh] min-h-[520px] overflow-hidden">
         <div className="absolute inset-0" data-cursor="view">
           <PlaceholderImage
+            loading="eager"
             src="/images/portfolio/maternity/16.webp"
             alt="Maternity photography by Studio63"
             label="Crimson Gown in Bloom"

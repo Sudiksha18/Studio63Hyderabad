@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Camera } from "lucide-react";
 
 type Props = {
@@ -34,7 +34,27 @@ export default function PlaceholderImage({
 }: Props) {
   const [failedSrc, setFailedSrc] = useState<string>();
   const [loadedSrc, setLoadedSrc] = useState<string>();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [nearViewport, setNearViewport] = useState(false);
+  const shouldLoad = loading === "eager" || nearViewport;
   const loaded = loadedSrc === src;
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (loading === "eager" || nearViewport || !container) return;
+    if (!("IntersectionObserver" in window)) {
+      setNearViewport(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setNearViewport(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: "300px" });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [loading, nearViewport, src]);
 
   if (failedSrc === src || !src) {
     return (
@@ -63,6 +83,7 @@ export default function PlaceholderImage({
 
   return (
     <div
+      ref={containerRef}
       className={`relative overflow-hidden w-full h-full ${aspect} ${className}`}
       aria-busy={!loaded}
       style={{ contentVisibility: loading === "lazy" ? "auto" : "visible" }}
@@ -73,7 +94,7 @@ export default function PlaceholderImage({
         ref={(image) => {
           if (image?.complete && image.naturalWidth > 0) setLoadedSrc(src);
         }}
-        src={src}
+        src={shouldLoad ? src : undefined}
         alt={alt}
         loading={loading}
         decoding="async"

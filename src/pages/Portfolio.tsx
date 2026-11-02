@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
+import { lazy, Suspense, useMemo, useState } from "react";
 import { motion, AnimatePresence, useScroll, useVelocity, useTransform, useSpring } from "framer-motion";
 import PlaceholderImage from "../components/PlaceholderImage";
-import Lightbox from "../components/Lightbox";
+const Lightbox = lazy(() => import("../components/Lightbox"));
 import { portfolioCategories, portfolioImages, type PortfolioCategory } from "../data/portfolio";
 
 export default function Portfolio() {
@@ -117,12 +117,14 @@ export default function Portfolio() {
       </div>
 
       {lightboxIndex !== null && (
+        <Suspense fallback={<div role="status" className="fixed inset-0 z-[100] bg-black/95 grid place-items-center text-white">Loading photo viewer...</div>}>
         <Lightbox
           images={filtered}
           index={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
           onNavigate={setLightboxIndex}
         />
+        </Suspense>
       )}
     </div>
   );

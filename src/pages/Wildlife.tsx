@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PlaceholderImage from "../components/PlaceholderImage";
-import Lightbox from "../components/Lightbox";
+const Lightbox = lazy(() => import("../components/Lightbox"));
 import { portfolioImages } from "../data/portfolio";
 
 const galleryImages = portfolioImages.filter((image) => image.category === "Wildlife");
@@ -14,6 +14,7 @@ export default function Wildlife() {
     <div className="bg-[var(--color-ivory)] dark:bg-[#080604]">
       <section className="relative h-[80vh] min-h-[520px] overflow-hidden">
         <PlaceholderImage
+            loading="eager"
           src={galleryImages[0].src}
           alt="Wildlife photography by Studio63 Hyderabad"
           aspect="aspect-auto"
@@ -64,7 +65,7 @@ export default function Wildlife() {
                 className="block w-full break-inside-avoid overflow-hidden cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-gold)]"
                 data-cursor="view"
               >
-                <PlaceholderImage src={image.src} alt={image.title} aspect="aspect-auto" className="!h-auto" />
+                <PlaceholderImage src={image.src} alt={image.title} aspect={image.orientation === "portrait" ? "aspect-[2/3]" : image.orientation === "square" ? "aspect-square" : "aspect-[3/2]"} className="!h-auto" />
               </motion.button>
             ))}
           </div>
@@ -75,7 +76,9 @@ export default function Wildlife() {
       </section>
 
       {lightboxIndex !== null && (
+        <Suspense fallback={<div role="status" className="fixed inset-0 z-[100] bg-black/95 grid place-items-center text-white">Loading photo viewer...</div>}>
         <Lightbox images={galleryImages} index={lightboxIndex} onClose={() => setLightboxIndex(null)} onNavigate={setLightboxIndex} />
+        </Suspense>
       )}
     </div>
   );
