@@ -14,14 +14,16 @@ export default function Wildlife() {
     <div className="bg-[var(--color-ivory)] dark:bg-[#080604]">
       <section className="relative h-[80vh] min-h-[520px] overflow-hidden">
         <PlaceholderImage
-            loading="eager"
-          src={galleryImages[0].src}
+          loading="eager"
+          src="/images/portfolio/animals/wildlife/2.png"
           alt="Wildlife photography by Studio63 Hyderabad"
+          objectPosition="center"
+          objectFit="cover"
           aspect="aspect-auto"
           className="absolute inset-0 w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/30" />
-        <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-14 pb-16">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-end px-6 md:px-14 pb-16 text-center">
           <p className="text-editorial-label text-white/50 mb-3">Studio63 · Hyderabad</p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -30,9 +32,9 @@ export default function Wildlife() {
             className="font-display font-bold text-white mb-3"
             style={{ fontSize: "clamp(3rem, 8vw, 7rem)", letterSpacing: "-0.04em", lineHeight: 0.95 }}
           >
-            Wildlife.<br /><span className="font-light italic">Through the Lens.</span>
+            Wildlife.
           </motion.h1>
-          <p className="font-display font-light italic text-white/60 text-xl">Life in the wild, captured in light.</p>
+          <p className="font-display font-light italic text-white/60" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.8rem)" }}>Life in the wild, captured in light.</p>
         </div>
       </section>
 

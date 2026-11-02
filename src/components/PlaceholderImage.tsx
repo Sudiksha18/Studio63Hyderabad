@@ -10,6 +10,8 @@ type Props = {
   loading?: "lazy" | "eager";
   /** Responsive sizes hint – defaults to a sensible value for most uses */
   sizes?: string;
+  objectPosition?: string;
+  objectFit?: "cover" | "contain";
 };
 
 /**
@@ -31,6 +33,8 @@ export default function PlaceholderImage({
   aspect = "aspect-[4/5]",
   loading = "lazy",
   sizes = "(max-width: 768px) 100vw, 50vw",
+  objectPosition = "center",
+  objectFit = "cover",
 }: Props) {
   const [failedSrc, setFailedSrc] = useState<string>();
   const [loadedSrc, setLoadedSrc] = useState<string>();
@@ -100,6 +104,7 @@ export default function PlaceholderImage({
         decoding="async"
         fetchPriority={loading === "eager" ? "high" : "low"}
         sizes={sizes}
+        style={{ objectPosition, objectFit }}
         className={`object-cover w-full h-full ${aspect} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
         onLoad={() => setLoadedSrc(src)}
         onError={() => setFailedSrc(src)}
