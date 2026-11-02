@@ -64,10 +64,15 @@ export default function Wildlife() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (index % 6) * 0.06 }}
-                className="block w-full break-inside-avoid overflow-hidden cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-gold)]"
+                className="photo-card block w-full break-inside-avoid cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-gold)]"
                 data-cursor="view"
               >
                 <PlaceholderImage src={image.src} alt={image.title} aspect={image.orientation === "portrait" ? "aspect-[2/3]" : image.orientation === "square" ? "aspect-square" : "aspect-[3/2]"} className="!h-auto" />
+                <div className="photo-overlay">
+                  <div className="photo-overlay-content">
+                    <p className="font-display text-white text-lg">{image.title}</p>
+                  </div>
+                </div>
               </motion.button>
             ))}
           </div>

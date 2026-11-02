@@ -85,20 +85,20 @@ export const portfolioImages: PortfolioImage[] = [
   { id: "mo21", category: "Models", title: "Fashion Portrait 06", src: "/images/portfolio/Models_2/PVL09404.webp", orientation: "landscape" },
 
   // Wildlife
-  { id: "wl1", category: "Wildlife", title: "Wildlife Study 01", src: "/images/portfolio/animals/1.jpg", orientation: "landscape" },
-  { id: "wl2", category: "Wildlife", title: "Wildlife Study 02", src: "/images/portfolio/animals/4.webp", orientation: "landscape" },
-  { id: "wl9", category: "Wildlife", title: "Wildlife Study 09", src: "/images/portfolio/animals/DSC02759_1.webp", orientation: "landscape" },
-  { id: "wl10", category: "Wildlife", title: "Wildlife Study 10", src: "/images/portfolio/animals/wildlife/1.webp", orientation: "landscape" },
-  { id: "wl11", category: "Wildlife", title: "Wildlife Study 11", src: "/images/portfolio/animals/wildlife/1000318628.webp", orientation: "landscape" },
-  { id: "wl12", category: "Wildlife", title: "Wildlife Study 12", src: "/images/portfolio/animals/wildlife/3.webp", orientation: "landscape" },
-  { id: "wl13", category: "Wildlife", title: "Wildlife Study 13", src: "/images/portfolio/animals/wildlife/4.webp", orientation: "landscape" },
-  { id: "wl14", category: "Wildlife", title: "Wildlife Study 14", src: "/images/portfolio/animals/wildlife/7.webp", orientation: "landscape" },
-  { id: "wl15", category: "Wildlife", title: "Wildlife Study 15", src: "/images/portfolio/animals/wildlife/DSC02835_1.webp", orientation: "landscape" },
-  { id: "wl16", category: "Wildlife", title: "Wildlife Study 16", src: "/images/portfolio/animals/wildlife/EDD.webp", orientation: "landscape" },
-  { id: "wl17", category: "Wildlife", title: "Wildlife Study 17", src: "/images/portfolio/animals/wildlife/mon.webp", orientation: "portrait" },
-  { id: "wl18", category: "Wildlife", title: "Wildlife Study 18", src: "/images/portfolio/animals/wildlife/Wild 11.webp", orientation: "portrait" },
+  { id: "wl1", category: "Wildlife", title: "A Pause in the Undergrowth", src: "/images/portfolio/animals/1.jpg", orientation: "landscape" },
+  { id: "wl2", category: "Wildlife", title: "Stripes on the Move", src: "/images/portfolio/animals/4.webp", orientation: "landscape" },
+  { id: "wl9", category: "Wildlife", title: "The Golden Gaze", src: "/images/portfolio/animals/DSC02759_1.webp", orientation: "landscape" },
+  { id: "wl10", category: "Wildlife", title: "A Song at Sundown", src: "/images/portfolio/animals/wildlife/1.webp", orientation: "landscape" },
+  { id: "wl11", category: "Wildlife", title: "Behind the Bark", src: "/images/portfolio/animals/wildlife/1000318628.webp", orientation: "landscape" },
+  { id: "wl12", category: "Wildlife", title: "Through the Green Kingdom", src: "/images/portfolio/animals/wildlife/3.webp", orientation: "landscape" },
+  { id: "wl13", category: "Wildlife", title: "Silhouette in Amber", src: "/images/portfolio/animals/wildlife/4.webp", orientation: "landscape" },
+  { id: "wl14", category: "Wildlife", title: "At the Water's Edge", src: "/images/portfolio/animals/wildlife/7.webp", orientation: "landscape" },
+  { id: "wl15", category: "Wildlife", title: "Eyes Through the Leaves", src: "/images/portfolio/animals/wildlife/DSC02835_1.webp", orientation: "landscape" },
+  { id: "wl16", category: "Wildlife", title: "A Glance from the Branches", src: "/images/portfolio/animals/wildlife/EDD.webp", orientation: "landscape" },
+  { id: "wl17", category: "Wildlife", title: "Lost in Thought", src: "/images/portfolio/animals/wildlife/mon.webp", orientation: "portrait" },
+  { id: "wl18", category: "Wildlife", title: "Wings in Living Colour", src: "/images/portfolio/animals/wildlife/Wild 11.webp", orientation: "portrait" },
 
-  { id: "wl19", category: "Wildlife", title: "Bird Among the Leaves", src: "/images/portfolio/animals/wildlife/bidee.webp", orientation: "landscape" },
+  { id: "wl19", category: "Wildlife", title: "A Quiet Perch", src: "/images/portfolio/animals/wildlife/bidee.webp", orientation: "landscape" },
 ];
 
 export const portfolioCategories: (PortfolioCategory | "All")[] = [
