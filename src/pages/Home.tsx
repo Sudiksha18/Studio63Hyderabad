@@ -44,7 +44,7 @@ const categories = [
     imageLabel: "Models editorial portrait",
   },
   {
-    title: "Wildlifessss",
+    title: "Wildlife",
     tagline: "Life in the wild, captured in light.",
     href: "/wildlife",
     imageSrc: "/images/portfolio/animals/1.jpg",
